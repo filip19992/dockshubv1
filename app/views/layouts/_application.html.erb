@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dockshubv1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_pack_tag "hello_react" %>
+  </head>
+
+  <body>
+    <p>Data from application.html</p>
+    <div id="hello-message"></div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const root = createRoot(document.getElementById('hello-message'));
+        root.render(<HelloComponent />);
+      });
+    </script>
+  </body>
+</html>
