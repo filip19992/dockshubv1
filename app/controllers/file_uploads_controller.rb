@@ -12,6 +12,11 @@ class FileUploadsController < ApplicationController
         render json: { error: 'Error uploading file' }, status: :bad_request
       end
     end
+
+    def index
+        @uploaded_files = UploadedFile.all
+        render json: @uploaded_files
+    end
   
     private
   
