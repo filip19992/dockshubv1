@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get '/api/hello', to: 'application#hello'
   get '/api/save/:field1/:field2', to: 'application#save_test_model'
   get '/api/get/:field1', to: 'application#test_models_by_field1'
+  post '/api/upload', to: 'file_uploads#create'
+
   # Defines the root path route ("/")
   # root "posts#index"
 end
