@@ -4,6 +4,7 @@ const API_FILES_ENDPOINT = '/api/file/get';
 
 const GetFilesComponent = () => {
   const [files, setFiles] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchFiles();
@@ -14,22 +15,28 @@ const GetFilesComponent = () => {
       .then(response => response.json())
       .then(data => {
         setFiles(data);
+        setLoading(false);
       })
       .catch(error => {
         console.error('Error fetching files:', error);
-        // Handle error, show message, etc.
+        setLoading(false);
       });
   };
 
-  console.log(files)
   return (
     <div>
       <h2>List of Uploaded Files</h2>
-      {files.length > 0 ? (
+      {loading ? (
+        <p>Loading...</p>
+      ) : files.length > 0 ? (
         <ul>
-          {files.map((file, index) => (
-  <li key={index}>{file.file_name}</li>
-))}
+          {files.map(file => (
+            <li key={file._id}>
+              <a href={`/file_uploads/${file.file_name}`} download={file.file_name}>
+                {file.file_name}
+              </a>
+            </li>
+          ))}
         </ul>
       ) : (
         <p>No files available</p>

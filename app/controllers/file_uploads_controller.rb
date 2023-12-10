@@ -17,6 +17,15 @@ class FileUploadsController < ApplicationController
         @uploaded_files = UploadedFile.all
         render json: @uploaded_files
     end
+
+    def show
+      @uploaded_file = UploadedFile.where(file_name: /^#{params[:id]}/i).first
+      if @uploaded_file
+        send_data @uploaded_file.file_data.data, type: 'application/octet-stream', disposition: 'inline', filename: @uploaded_file.file_name
+      else
+        render json: { error: 'File not found' }, status: :not_found
+      end
+    end
   
     private
   
