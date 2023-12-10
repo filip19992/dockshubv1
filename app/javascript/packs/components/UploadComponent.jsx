@@ -13,7 +13,10 @@ const UploadComponent = () => {
   const handleUpload = () => {
     if (selectedFile) {
       const formData = new FormData();
-      formData.append('file_upload', selectedFile);
+      formData.append('file', selectedFile);
+
+      console.log('Selected File:', selectedFile);
+      console.log('FormData:', formData);
 
       fetch(API_UPLOAD_ENDPOINT, {
         method: 'POST',
@@ -22,7 +25,7 @@ const UploadComponent = () => {
         .then(response => response.json())
         .then(data => {
           console.log('File uploaded successfully:', data);
-          // Add any additional logic or state updates as needed
+         console.log(formData)
         })
         .catch(error => {
           console.error('Error uploading file:', error);

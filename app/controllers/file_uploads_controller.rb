@@ -21,8 +21,11 @@ class FileUploadsController < ApplicationController
     private
   
     def file_params
-      if params[:file_upload].present? && params[:file_upload].respond_to?(:fetch)
-        { file_data: BSON::Binary.new(params[:file_upload].fetch(:file).read) }
+      if params[:file].present?
+        {
+          file_name: params[:file].original_filename,
+          file_data: BSON::Binary.new(params[:file].read)
+        }
       end
     end
   end
