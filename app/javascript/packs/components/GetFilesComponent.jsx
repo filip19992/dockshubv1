@@ -23,6 +23,23 @@ const GetFilesComponent = () => {
       });
   };
 
+  const handleDelete = (fileName) => {
+    // Make a DELETE request to your API endpoint to delete the file by name
+    // Example: /api/file_uploads/destroy/:file_name
+    fetch(`/api/file/delete/${fileName}`, {
+      method: 'DELETE',
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('File deleted successfully:', data);
+        // Fetch the updated list of files after deletion
+        fetchFiles();
+      })
+      .catch(error => {
+        console.error('Error deleting file:', error);
+      });
+  };
+
   return (
     <div>
       <h2>List of Uploaded Files</h2>
@@ -35,6 +52,7 @@ const GetFilesComponent = () => {
               <a href={`/file_uploads/${file.file_name}`} download={file.file_name}>
                 {file.file_name}
               </a>
+              <button onClick={() => handleDelete(file.file_name)}>Delete</button>
             </li>
           ))}
         </ul>

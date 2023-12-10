@@ -13,6 +13,16 @@ class FileUploadsController < ApplicationController
       end
     end
 
+    def delete
+      @uploaded_file = UploadedFile.where(file_name: /^#{params[:file_name]}/i).first
+      if @uploaded_file
+        @uploaded_file.destroy
+        render json: { message: 'File deleted successfully' }, status: :ok
+      else
+        render json: { error: 'File not found' }, status: :not_found
+      end
+    end
+
     def index
         @uploaded_files = UploadedFile.all
         render json: @uploaded_files
