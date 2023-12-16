@@ -1,18 +1,51 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Dockshubv1</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<html lang="en">
+<head>
+  <title>Dockshubv1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_pack_tag "upload_react" %>
-    <%= javascript_pack_tag "get_react" %>
-  </head>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_pack_tag "upload_react" %>
+  <%= javascript_pack_tag "get_react" %>
 
-  <body>
- <div id="upload-files-component"></div>
- <div id="get-files-component"></div>
-  </body>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    #app-container {
+      text-align: center;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #3498db;
+    }
+
+    #upload-files-component,
+    #get-files-component {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app-container">
+    <h1>Dockshubv1</h1>
+    <div id="upload-files-component"></div>
+    <div id="get-files-component"></div>
+  </div>
+</body>
 </html>

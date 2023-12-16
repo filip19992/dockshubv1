@@ -25,7 +25,6 @@ const UploadComponent = () => {
         .then(response => response.json())
         .then(data => {
           console.log('File uploaded successfully:', data);
-         console.log(formData)
         })
         .catch(error => {
           console.error('Error uploading file:', error);
@@ -47,27 +46,57 @@ const UploadComponent = () => {
   };
 
   return (
-    <div>
-      <label htmlFor="fileInput">Choose File:</label>
+    <div style={styles.uploadContainer}>
+      <label htmlFor="fileInput" style={styles.fileInputLabel}>
+        Choose File
+      </label>
       <input
         type="file"
         id="fileInput"
         onChange={handleFileChange}
-        style={{ display: 'none' }}
+        style={styles.fileInput}
       />
-      <div>
+      <div style={styles.selectedFileContainer}>
         {selectedFile ? (
-          <p>Selected File: {selectedFile.name}</p>
+          <p style={styles.selectedFileText}>Selected File: {selectedFile.name}</p>
         ) : (
           <p>No file selected</p>
         )}
       </div>
-      <label htmlFor="fileInput" style={{ cursor: 'pointer', color: 'blue' }}>
-        Choose File
-      </label>
-      <button onClick={handleFileUpload}>Upload File</button>
+      <button onClick={handleFileUpload} style={styles.uploadButton}>Upload File</button>
     </div>
   );
+};
+
+const styles = {
+  uploadContainer: {
+    marginBottom: '20px',
+    backgroundColor: '#fff',
+    padding: '20px',
+    borderRadius: '8px',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+  },
+  fileInputLabel: {
+    cursor: 'pointer',
+    color: '#3498db',
+  },
+  fileInput: {
+    display: 'none',
+  },
+  selectedFileContainer: {
+    marginTop: '10px',
+  },
+  selectedFileText: {
+    color: '#27ae60',
+  },
+  uploadButton: {
+    backgroundColor: '#2ecc71',
+    color: '#fff',
+    border: 'none',
+    padding: '10px',
+    borderRadius: '4px',
+    cursor: 'pointer',
+  },
 };
 
 export default UploadComponent;
