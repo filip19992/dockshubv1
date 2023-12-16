@@ -25,6 +25,8 @@ const UploadComponent = () => {
         .then(response => response.json())
         .then(data => {
           console.log('File uploaded successfully:', data);
+          // Reload the entire page to reflect changes
+          window.location.reload();
         })
         .catch(error => {
           console.error('Error uploading file:', error);
