@@ -1,2 +1,28 @@
-<h1>Dockshub - your local file server</h1>
-<%= render 'layouts/application' %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dockshub</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: flex-start; /* Align items to the start (top) */
+      justify-content: center;
+      min-height: 100vh; /* Set a minimum height to ensure content is at the top */
+    }
+
+    .center-container {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="center-container">
+    <h1>Dockshub - your local file server</h1>
+    <%= render 'layouts/application' %>
+  </div>
+</body>
+</html>
