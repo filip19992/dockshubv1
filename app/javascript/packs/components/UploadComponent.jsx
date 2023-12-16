@@ -28,11 +28,9 @@ const UploadComponent = () => {
         })
         .catch(error => {
           console.error('Error uploading file:', error);
-          // Handle error, show message, etc.
         });
     } else {
       console.log('No file selected');
-      // Handle case where no file is selected
     }
   };
 
@@ -41,7 +39,6 @@ const UploadComponent = () => {
       handleUpload();
     } else {
       console.log('Select a file first');
-      // Optionally, you can show a message to select a file before upload
     }
   };
 
